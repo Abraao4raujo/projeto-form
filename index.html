@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1 class="cabecalho">Cadastro do cliente</h1>
+
+        <button type="button" id="botao-cadastro">cadastrar cliente</button>
+
+            <table>
+                <tr>
+                    <th>Nome</th>
+                    <th>Sobrenome</th>
+                    <th>email</th>
+                    <th>cidade</th>
+                    <th>Ação</th>
+                </tr>
+                <tr>
+                    <td>Abraão</td>
+                    <td>Araujo</td>
+                    <td>gamerabrao001@gmail.com</td>
+                    <td>Maceió</td>
+                    <td></td>
+
+                </tr>
+            </table>
+
+            <div class="modal" id="meumodal">
+                <div class="modal-content">
+                        <div class="modal-head">
+                            <span class="fechar">X</span>
+                            <p>Area de cadastro</p>
+                        </div> 
+
+                        <div class="modal-body">
+                                <div class="espacos">
+                                    <input type="text" name="nome" id="nome" placeholder="Primeiro nome" required>
+                                    <input type="email" name="Email" id="email" placeholder="Email" required>
+                                    <input type="text" name="sobrenome" id="sobrenome" placeholder="Sobrenome" required>                  
+                                    <input type="text" name="cidade" id="cidade" placeholder="Cidade" required>
+                                </div>        
+                        </div>
+                        <div class="botao">
+                            <input type="button" value="Enviar" id="enviar">
+                        </div>
+                </div>
+            </div>
+</body>
+<script type="module" src="modules/script.js"></script>
+</html>

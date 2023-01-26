@@ -1,0 +1,115 @@
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+
+  *{
+    margin: 0;
+    padding: 0;
+}
+
+.cabecalho{
+    background-color: rgb(119, 106, 106);
+    color: #fff;
+    text-align: center;
+    padding: 2%;
+    font-size: 1.8rem;
+    font-family: 'Bebas Neue', cursive;
+    letter-spacing: 4px;
+}
+
+table{
+    width: 100%;
+}
+
+
+#botao-cadastro{
+    padding: 10px;
+    font-family: cursive;
+    color: white;
+    background-color: rgb(119, 106, 106);
+    border: 0;
+    border-radius: 3px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+#botao-cadastro:hover{
+    box-shadow: 1px 1px 2px rgb(61, 61, 61);
+}
+
+th{
+    background-color: orange;
+    border-radius: 3px;
+    text-transform: capitalize;
+    color: gray;
+}
+
+td{
+    text-align: center;
+}
+
+.modal{
+    display: none;
+    z-index: 1;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content{
+    position: relative;
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+    height: 50%;
+}
+
+.modal-head{
+    padding: 20px;
+    border-bottom: 1px solid black;
+}
+
+.modal-body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.espacos{
+    padding: 21px 10px;
+    width: 60%;
+    columns: 2;
+
+}
+
+.espacos > input{
+    padding: 20px;
+    margin: 10px;
+}
+
+#enviar{
+    padding: 15px;
+    padding-left: 30px;
+    padding-right: 30px;
+    position: absolute;
+    right: 50px;
+}
+
+
+.fechar{
+    color: #aaa;
+    float: right;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.fechar:hover,
+.fechar:focus{
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
