@@ -30,7 +30,7 @@
                 </tr>
             </table>
 
-            <div class="modal" id="meumodal">
+            <div class="modal" id="meumodal" class="fechar-ao-redor">
                 <div class="modal-content">
                         <div class="modal-head">
                             <span class="fechar">X</span>
@@ -39,14 +39,36 @@
 
                         <div class="modal-body">
                                 <div class="espacos">
-                                    <input type="text" name="nome" id="nome" placeholder="Primeiro nome" required>
-                                    <input type="email" name="Email" id="email" placeholder="Email" required>
-                                    <input type="text" name="sobrenome" id="sobrenome" placeholder="Sobrenome" required>                  
-                                    <input type="text" name="cidade" id="cidade" placeholder="Cidade" required>
+                                    <input type="text" name="nome" id="nome" placeholder="Primeiro nome" class="preencher" required>
+                                    <input type="email" name="Email" id="email" placeholder="Email" class="preencher" required>
+                                    <input type="text" name="sobrenome" id="sobrenome" placeholder="Sobrenome" class="preencher" required>                  
+                                    <input type="text" name="cidade" id="cidade" placeholder="Cidade" class="preencher" required>
                                 </div>        
                         </div>
                         <div class="botao">
-                            <input type="button" value="Enviar" id="enviar">
+                            <input type="button" value="Enviar" class="atualizarUsuario" id="enviar">
+                        </div>
+                </div>
+            </div>
+
+            <div id="modal-secundario" class="fechar-ao-redor">
+                <div class="modal-content">
+                        <div class="modal-head">
+                            <span class="fechar">X</span>
+                            <p>Editar Usuario</p>
+                        </div> 
+
+                        <div class="modal-body">
+                                <div class="espacos">
+                                    <input type="text" name="nome" id="nome" placeholder="Primeiro nome" class="preencher2" required>
+                                    <input type="email" name="Email" id="email" placeholder="Email" class="preencher2" required>
+                                    <input type="text" name="sobrenome" id="sobrenome" placeholder="Sobrenome" class="preencher2" required>                  
+                                    <input type="text" name="cidade" id="cidade" placeholder="Cidade" class="preencher2" required>
+                                </div>        
+                        </div>
+                        <div class="botao">
+                            <input type="button" value="Excluir" class="excluirUsuario">
+                            <input type="button" value="Salvar" class="atualizarUsuario" id="salvar">
                         </div>
                 </div>
             </div>
