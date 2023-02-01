@@ -121,7 +121,7 @@ td{
     font-weight: bolder;
 }
 
-.excluirUsuario{
+#excluirUsuario{
     padding: 15px;
     padding-left: 30px;
     padding-right: 30px;

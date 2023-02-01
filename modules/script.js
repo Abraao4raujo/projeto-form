@@ -3,7 +3,7 @@ var modal = document.querySelector('#meumodal')
 var modalSecondary = document.querySelector('#modal-secundario')
 var closeBtn = document.querySelectorAll('.fechar')
 var enviarBtn = document.querySelector('#enviar')
-var deleteBtn = document.querySelector('.excluirUsuario')
+var deleteBtn = document.querySelector('#excluirUsuario')
 var inputs = document.querySelectorAll('.preencher')
 var inputs2 = document.querySelectorAll('.preencher2')
 var inputValues = []
@@ -22,6 +22,7 @@ function adcElemento(nome, email, sobrenome, cidade) {
     celulaEmail.setAttribute('id', 'display-email')
     celulaSobrenome.setAttribute('id', 'display-sobrenome')
     celulaCidade.setAttribute('id', 'display-cidade')
+    linha.setAttribute('id', 'linhaTr')
     
     celulaNome.innerHTML = nome
     celulaSobrenome.innerHTML = sobrenome
@@ -98,6 +99,7 @@ function enviarModal () {
     modalSecondary.style.display = "none"
 }
 
+
  //eventos
 btn.addEventListener('click', abrirModal)
 window.addEventListener('click', fecharAoRedor)
@@ -106,6 +108,19 @@ closeBtn.forEach((item) => {
     item.addEventListener('click', fecharModal) 
 })
 btnSalvar.addEventListener('click', salvarMudancas)
+deleteBtn.addEventListener('click', excluirUser)
+
+function excluirUser(){
+    var linha = document.querySelector('#linhaTr')
+    linha.remove()
+
+    document.getElementById('nome').value = ""
+    document.getElementById('email').value = ""
+    document.getElementById('sobrenome').value = ""
+    document.getElementById('cidade').value = ""
+
+    modalSecondary.style.display = "none"
+}
 //verificar porque o modal secundario nao fecha quando clica no 'X' --funcionando--
 //criar uma funcao para fechar o modal secundario ao redor --funcionando--
 //verificar porque o modal primario nao apaga as informações(nome,sobrenome,email,cidade) que ja foram registradas do usuario --funcionando--
