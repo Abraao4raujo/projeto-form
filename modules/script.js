@@ -54,7 +54,7 @@ function fecharAoRedor(event) {
     }
     if(event.target == modalSecondary) {
         modalSecondary.style.display = "none"
-    }}
+    }} 
 
 //botao-enviar
 function enviarModal () {
