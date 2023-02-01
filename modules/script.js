@@ -1,13 +1,14 @@
+'use strict'
 var btn = document.querySelector('#botao-cadastro')
-var modal = document.querySelector('#meumodal')
+var modal = document.querySelector('#modal-primario')
 var modalSecondary = document.querySelector('#modal-secundario')
 var closeBtn = document.querySelectorAll('.fechar')
 var enviarBtn = document.querySelector('#enviar')
 var deleteBtn = document.querySelector('#excluirUsuario')
 var inputs = document.querySelectorAll('.preencher')
 var inputs2 = document.querySelectorAll('.preencher2')
-var inputValues = []
 var btnSalvar = document.querySelector('#salvarUsuario')
+//var usuarios = []
 
 function adcElemento(nome, email, sobrenome, cidade) {
     var tabela = document.querySelector('table')
@@ -23,57 +24,63 @@ function adcElemento(nome, email, sobrenome, cidade) {
     celulaSobrenome.setAttribute('id', 'display-sobrenome')
     celulaCidade.setAttribute('id', 'display-cidade')
     linha.setAttribute('id', 'linhaTr')
-    
+
     celulaNome.innerHTML = nome
     celulaSobrenome.innerHTML = sobrenome
     celulaEmail.innerHTML = email
     celulaCidade.innerHTML = cidade
     btnEditarUsuario.innerHTML = `<button class="btnEdit">Editar</button>`
 
+    /*var usuario = {
+        nome: nome,
+        sobrenome: sobrenome,
+        email: email,
+        cidade: cidade,
+    }
+
+    usuarios.push(usuario)*/
     //botao-editar-usuario
     btnEditarUsuario.addEventListener('click', () => {
-       modalSecondary.style.display = "block"
-   })
+        modalSecondary.style.display = "block"
+        inputs2.forEach(input => input.value = '')
+    })
 }
 
 //abrir-modal-cadastro
-function abrirModal() {
-    modal.style.display = 'block'
-}
+const openModal = () => document.getElementById('modal-primario').classList.add('active')
 
 //botao-fechar
-function fecharModal() {
-    modal.style.display = "none"
-    modalSecondary.style.display = "none"
-}
+const closeModal = () => document.getElementById('modal-primario').classList.remove('active')
 
 //fechar-ao-redor-modal
-function fecharAoRedor(event) {
-    if(event.target == modal) {
-        modal.style.display = "none"
+const fecharAoRedor = (event) => {
+    if (event.target == modal) {
+        closeModal()
     }
-    if(event.target == modalSecondary) {
+    if (event.target == modalSecondary) {
         modalSecondary.style.display = "none"
-    }}
+    }
+}
 
 //botao-enviar
-function enviarModal () {
-    for(var i = 0; i < inputs.length; i++){
-     inputValues.push(inputs[i].value)
-     if(inputs[i].value == '') {
-         console.log('Está vazio!')
-         return;
-     }
- }
+function enviarModal() {
+    var inputValues = [];
+    for (var i = 0; i < inputs.length; i++) {
+        inputValues.push(inputs[i].value)
+        if (inputs[i].value == '') {
+            console.log('Está vazio!')
+            return;
+        }
+    }
 
- modal.style.display = "none"
- colarInformacoesInput()
- adcElemento(...inputValues)
- console.log(...inputValues)
- inputs.forEach(input => input.value = '')
- }
+    closeModal()
+    colarInformacoesInput()
+    adcElemento(...inputValues)
+    console.log(...inputValues)
+    inputs.forEach(input => input.value = '')
+}
 
- function colarInformacoesInput() {
+function colarInformacoesInput() {
     var name = document.getElementById('nome').value
     var email = document.getElementById('email').value
     var sobrenome = document.getElementById('sobrenome').value
@@ -83,9 +90,16 @@ function enviarModal () {
     document.getElementById("user-email").value = email
     document.getElementById("user-sobrenome").value = sobrenome
     document.getElementById("user-cidade").value = cidade
- }
+}
 
- function salvarMudancas(){
+function salvarMudancas() {
+    for (var i = 0; i < inputs2.length; i++) {
+        if (inputs2[i].value == '') {
+            console.log('Está vazio!')
+            return;
+        }
+    }
+
     var name = document.getElementById('user-name').value
     var email = document.getElementById('user-email').value
     var sobrenome = document.getElementById('user-sobrenome').value
@@ -96,21 +110,11 @@ function enviarModal () {
     document.getElementById("display-sobrenome").innerHTML = sobrenome
     document.getElementById("display-cidade").innerHTML = cidade
 
+
     modalSecondary.style.display = "none"
 }
 
-
- //eventos
-btn.addEventListener('click', abrirModal)
-window.addEventListener('click', fecharAoRedor)
-enviarBtn.addEventListener('click', enviarModal)
-closeBtn.forEach((item) => {
-    item.addEventListener('click', fecharModal) 
-})
-btnSalvar.addEventListener('click', salvarMudancas)
-deleteBtn.addEventListener('click', excluirUser)
-
-function excluirUser(){
+const excluirUser = () => {
     var linha = document.querySelector('#linhaTr')
     linha.remove()
 
@@ -121,6 +125,15 @@ function excluirUser(){
 
     modalSecondary.style.display = "none"
 }
+//eventos
+btn.addEventListener('click', openModal)
+window.addEventListener('click', fecharAoRedor)
+enviarBtn.addEventListener('click', enviarModal)
+closeBtn.forEach((item) => {
+    item.addEventListener('click', closeModal)
+})
+btnSalvar.addEventListener('click', salvarMudancas)
+deleteBtn.addEventListener('click', excluirUser)
 //verificar porque o modal secundario nao fecha quando clica no 'X' --funcionando--
 //criar uma funcao para fechar o modal secundario ao redor --funcionando--
 //verificar porque o modal primario nao apaga as informações(nome,sobrenome,email,cidade) que ja foram registradas do usuario --funcionando--
