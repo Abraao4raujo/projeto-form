@@ -119,14 +119,13 @@ closeBtn.forEach((item) => {
 btnSalvar.addEventListener('click', salvarMudancas)
 deleteBtn.addEventListener('click', excluirUser)
 
-/*fechar-ao-redor-modal
-function fecharAoRedor(event) {
-    if(event.target == modal) {
-        modal.style.display = "none"
-    }
-    if(event.target == modalSecondary) {
-        modalSecondary.style.display = "none"
-    }} 
-
-window.addEventListener('click', fecharAoRedor)
-*/
+//fechar-ao-redor-modal
+//function fecharAoRedor(event) {
+//    if(event.target == modal) {
+//        modal.style.display = "none"
+//    }
+//    if(event.target == modalSecondary) {
+//        modalSecondary.style.display = "none"
+//    }} 
+//
+//window.addEventListener('click', fecharAoRedor)
