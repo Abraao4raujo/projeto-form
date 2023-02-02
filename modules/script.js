@@ -1,6 +1,6 @@
 var btn = document.querySelector('#botao-cadastro')
-var modal = document.querySelector('#meumodal')
-var modalSecondary = document.querySelector('#modal-secundario')
+var modal = document.querySelector('#modalCadastrar')
+var modalSecondary = document.querySelector('#modalEditar')
 var closeBtn = document.querySelectorAll('.fechar')
 var enviarBtn = document.querySelector('#enviar')
 var deleteBtn = document.querySelector('#excluirUsuario')
@@ -23,7 +23,7 @@ function adcElemento(nome, email, sobrenome, cidade) {
     celulaSobrenome.setAttribute('id', 'display-sobrenome')
     celulaCidade.setAttribute('id', 'display-cidade')
     linha.setAttribute('id', 'linhaTr')
-    
+
     celulaNome.innerHTML = nome
     celulaSobrenome.innerHTML = sobrenome
     celulaEmail.innerHTML = email
@@ -32,8 +32,8 @@ function adcElemento(nome, email, sobrenome, cidade) {
 
     //botao-editar-usuario
     btnEditarUsuario.addEventListener('click', () => {
-       modalSecondary.style.display = "block"
-   })
+        modalSecondary.style.display = "block"
+    })
 }
 
 //abrir-modal-cadastro
@@ -47,33 +47,25 @@ function fecharModal() {
     modalSecondary.style.display = "none"
 }
 
-//fechar-ao-redor-modal
-function fecharAoRedor(event) {
-    if(event.target == modal) {
-        modal.style.display = "none"
-    }
-    if(event.target == modalSecondary) {
-        modalSecondary.style.display = "none"
-    }} 
-
 //botao-enviar
-function enviarModal () {
-    for(var i = 0; i < inputs.length; i++){
-     inputValues.push(inputs[i].value)
-     if(inputs[i].value == '') {
-         console.log('Está vazio!')
-         return;
-     }
- }
+function enviarModal() {
+    for (var i = 0; i < inputs.length; i++) {
+        inputValues.push(inputs[i].value)
+        if (inputs[i].value == '') {
+            console.log('Está vazio!')
+            return;
+        }
+    }
 
- modal.style.display = "none"
- colarInformacoesInput()
- adcElemento(...inputValues)
- console.log(...inputValues)
- inputs.forEach(input => input.value = '')
- }
+    modal.style.display = "none"
+    colarInformacoesInput()
+    adcElemento(...inputValues)
+    console.log(...inputValues)
+    inputs.forEach(input => input.value = '')
+    inputValues = []
+}
 
- function colarInformacoesInput() {
+function colarInformacoesInput() {
     var name = document.getElementById('nome').value
     var email = document.getElementById('email').value
     var sobrenome = document.getElementById('sobrenome').value
@@ -83,9 +75,16 @@ function enviarModal () {
     document.getElementById("user-email").value = email
     document.getElementById("user-sobrenome").value = sobrenome
     document.getElementById("user-cidade").value = cidade
- }
+}
 
- function salvarMudancas(){
+function salvarMudancas() {
+    for (var i = 0; i < inputs2.length; i++) {
+        if (inputs2[i].value == '') {
+            console.log('Está vazio!')
+            return;
+        }
+    }
+
     var name = document.getElementById('user-name').value
     var email = document.getElementById('user-email').value
     var sobrenome = document.getElementById('user-sobrenome').value
@@ -99,18 +98,7 @@ function enviarModal () {
     modalSecondary.style.display = "none"
 }
 
-
- //eventos
-btn.addEventListener('click', abrirModal)
-window.addEventListener('click', fecharAoRedor)
-enviarBtn.addEventListener('click', enviarModal)
-closeBtn.forEach((item) => {
-    item.addEventListener('click', fecharModal) 
-})
-btnSalvar.addEventListener('click', salvarMudancas)
-deleteBtn.addEventListener('click', excluirUser)
-
-function excluirUser(){
+function excluirUser() {
     var linha = document.querySelector('#linhaTr')
     linha.remove()
 
@@ -121,10 +109,24 @@ function excluirUser(){
 
     modalSecondary.style.display = "none"
 }
-//verificar porque o modal secundario nao fecha quando clica no 'X' --funcionando--
-//criar uma funcao para fechar o modal secundario ao redor --funcionando--
-//verificar porque o modal primario nao apaga as informações(nome,sobrenome,email,cidade) que ja foram registradas do usuario --funcionando--
-//aparecer as informacoes do usuario no modal secundario quando clicar em editar
-//editar e salvar quando clicar em editar usuario
 
-//quando clica no botao salvar, ele nao modifica o elemento do form.
+//eventos
+btn.addEventListener('click', abrirModal)
+enviarBtn.addEventListener('click', enviarModal)
+closeBtn.forEach((item) => {
+    item.addEventListener('click', fecharModal)
+})
+btnSalvar.addEventListener('click', salvarMudancas)
+deleteBtn.addEventListener('click', excluirUser)
+
+/*fechar-ao-redor-modal
+function fecharAoRedor(event) {
+    if(event.target == modal) {
+        modal.style.display = "none"
+    }
+    if(event.target == modalSecondary) {
+        modalSecondary.style.display = "none"
+    }} 
+
+window.addEventListener('click', fecharAoRedor)
+*/

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,10 +8,13 @@
     <title>Cadastro</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <h1 class="cabecalho">Cadastro do cliente</h1>
+    <div id="container">
+        <h1 class="cabecalho">Cadastro do cliente</h1>
 
         <button type="button" id="botao-cadastro">cadastrar cliente</button>
+        <div id="pagina-principal">
 
             <table>
                 <tr>
@@ -21,49 +25,56 @@
                     <th>Ação</th>
                 </tr>
             </table>
+        </div>
+        <div id="modalCadastrar">
+            <div>
+                <div class="modal-head">
+                    <span class="fechar">X</span>
+                    <p>Cadastrar cliente</p>
+                </div>
 
-            <div class="modal" id="meumodal" class="fechar-ao-redor">
-                <div class="modal-content">
-                        <div class="modal-head">
-                            <span class="fechar">X</span>
-                            <p>Area de cadastro</p>
-                        </div> 
-
-                        <div class="modal-body">
-                                <div class="espacos">
-                                    <input type="text" name="nome" id="nome" placeholder="Primeiro nome" class="preencher" required>
-                                    <input type="email" name="Email" id="email" placeholder="Email" class="preencher" required>
-                                    <input type="text" name="sobrenome" id="sobrenome" placeholder="Sobrenome" class="preencher" required>                  
-                                    <input type="text" name="cidade" id="cidade" placeholder="Cidade" class="preencher" required>
-                                </div>        
-                        </div>
-                        <div class="botao">
-                            <input type="button" value="Enviar" class="atualizarUsuario" id="enviar">
-                        </div>
+                <div class="modal-body">
+                    <div class="espacos">
+                        <input type="text" name="nome" id="nome" placeholder="Nome" class="preencher" required>
+                        <input type="text" name="second-name" id="sobrenome" placeholder="Sobrenome" class="preencher"
+                            required>
+                        <input type="email" name="Email" id="email" placeholder="Email" class="preencher" required>
+                        <input type="text" name="cidade" id="cidade" placeholder="Cidade" class="preencher" required>
+                    </div>
+                </div>
+                <div>
+                    <input type="button" value="Enviar" class="btnSalvarUsuario" id="enviar">
                 </div>
             </div>
+        </div>
 
-            <div id="modal-secundario" class="fechar-ao-redor">
-                <div class="modal-content">
-                        <div class="modal-head">
-                            <span class="fechar">X</span>
-                            <p>Editar Usuario</p>
-                        </div> 
+        <div id="modalEditar">
+            <div>
+                <div class="modal-head">
+                    <span class="fechar">X</span>
+                    <p>Editar Usuário</p>
+                </div>
 
-                        <div class="modal-body">
-                                <div class="espacos">
-                                    <input type="text" name="nome" id="user-name" placeholder="Primeiro nome" class="preencher2" required>
-                                    <input type="email" name="Email" id="user-email" placeholder="Email" class="preencher2" required>
-                                    <input type="text" name="sobrenome" id="user-sobrenome" placeholder="Sobrenome" class="preencher2" required>                  
-                                    <input type="text" name="cidade" id="user-cidade" placeholder="Cidade" class="preencher2" required>
-                                </div>        
-                        </div>
-                        <div class="botao">
-                            <input type="button" value="Excluir" class="btnExcluirUsuario" id="excluirUsuario">
-                            <input type="button" value="Salvar" class="atualizarUsuario" id="salvarUsuario">
-                        </div>
+                <div class="modal-body">
+                    <div class="espacos">
+                        <input type="text" name="nome" id="user-name" placeholder="Nome" class="preencher2" required>
+                        <input type="text" name="second-name" id="user-sobrenome" placeholder="Sobrenome"
+                            class="preencher2" required>
+                        <input type="email" name="Email" id="user-email" placeholder="Email" class="preencher2"
+                            required>
+                        <input type="text" name="cidade" id="user-cidade" placeholder="Cidade" class="preencher2"
+                            required>
+                    </div>
+                </div>
+                <div>
+                    <input type="button" value="Excluir" class="btnExcluirUsuario" id="excluirUsuario">
+                    <input type="button" value="Salvar" class="btnSalvarUsuario" id="salvarUsuario">
                 </div>
             </div>
+        </div>
+    </div>
+    </div>
 </body>
 <script type="module" src="modules/script.js"></script>
+
 </html>

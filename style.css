@@ -1,145 +1,196 @@
   @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
 
-  *{
-    margin: 0;
-    padding: 0;
-}
+  * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+  }
 
-.cabecalho{
-    background-color: rgb(119, 106, 106);
-    color: #fff;
-    text-align: center;
-    padding: 2%;
-    font-size: 1.8rem;
-    font-family: 'Bebas Neue', cursive;
-    letter-spacing: 4px;
-}
+  :root {
+      --color01-color: #6B14FE;
+      --color02-color: #2712E6;
+      --color03-color: #2145FC;
+      --color04-color: #126DE6;
+      --color05-color: #14B6FE;
+      --color06-color: #FAFAFA;
+      --color07-color: #C4C4C4
+  }
 
-table{
-    width: 100%;
-}
+  *::-webkit-scrollbar {
+      width: 10px;
+  }
 
+  *::-webkit-scrollbar-track {
+      background: var(--color06-color);
+  }
 
-#botao-cadastro{
-    padding: 10px;
-    font-family: cursive;
-    color: white;
-    background-color: rgb(119, 106, 106);
-    border: 0;
-    border-radius: 3px;
-    margin: 10px;
+  *::-webkit-scrollbar-thumb {
+      background-color: var(--color05-color);
+      border-radius: 20px;
+      border: 1px solid #2145FC;
+  }
+
+  html {
+      height: 100%;
+  }
+
+  body {
+      min-height: 100vh;
+  }
+
+  #container {
+      border: 1px solid black;
+      height: 100vh;
+      position: relative;
+      background-color: #FAFAFA;
+  }
+
+  #pagina-principal {
+      position: absolute;
+      top: 25vh;
+      left: 2vw;
+      width: 70%;
+      height: 67vh;
+      overflow-y: auto;
+      border: 1px solid black;
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;
+      background-color: var(--color06-color);
+  }
+
+  .cabecalho {
+      background-color: var(--color04-color);
+      color: #fff;
+      text-align: center;
+      padding: 2%;
+      font-size: 1.8rem;
+      font-family: 'Bebas Neue', cursive;
+      letter-spacing: 4px;
+  }
+
+  table {
+      width: 100%;
+  }
+
+  #botao-cadastro {
+      padding: 10px;
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      font-size: 1rem;
+      color: #fff;
+      background-color: var(--color04-color);
+      border: 0;
+      border-radius: 3px;
+      margin: 10px;
+      cursor: pointer;
+      text-transform: capitalize;
+
+  }
+
+  #botao-cadastro:hover {
+      box-shadow: 1px 1px 2px var(--color04-color);
+  }
+
+  th {
+      background-color: var(--color05-color);
+      border-radius: 3px;
+      text-transform: capitalize;
+      color: #fff;
+      font-family: Arial, Helvetica, sans-serif;
+  }
+
+  td {
+      text-align: center;
+      font-family: Arial, Helvetica, sans-serif;
+  }
+
+  #modalCadastrar {
+      display: none;
+      position: relative;
+      background-color: #fefefe;
+      top: 10.8%;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 26%;
+      height: 67.3%;
+      float: right;
+      margin-right: 15px;
+      text-align: center;
+  }
+
+  #modalEditar {
+      display: none;
+      position: relative;
+      background-color: #fefefe;
+      top: 10.8%;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 26%;
+      height: 67.3%;
+      float: right;
+      margin-right: 15px;
+      text-align: center;
+  }
+
+  .btnEdit{
     cursor: pointer;
-}
+  }
 
-#botao-cadastro:hover{
-    box-shadow: 1px 1px 2px rgb(61, 61, 61);
-}
+  .modal-head {
+      padding: 10px;
+      border-bottom: 1px solid black;
+  }
 
-th{
-    background-color: orange;
-    border-radius: 3px;
-    text-transform: capitalize;
-    color: gray;
-}
+  .fechar {
+      color: #aaa;
+      float: right;
+      font-size: 20px;
+      font-weight: bold;
+  }
 
-td{
-    text-align: center;
-}
+  .modal-body {
+      float: left;
+  }
 
-.modal{
-    display: none;
-    z-index: 1;
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.4);
-}
+  .espacos {
+      position: absolute;
+      width: auto;
+      height: 61%;
+      top: 15%;
+  }
 
-#modal-secundario{
-    display: none;
-    z-index: 1;
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.4);
-}
+  .espacos>input {
+      padding: 18px 30px;
+      margin: 8px;
+  }
 
-.modal-content{
-    position: relative;
-    background-color: #fefefe;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 50%;
-    height: 50%;
-    animation: topBottom 1.5s
-}
+  .btnSalvarUsuario {
+      padding: 15px 25px 15px 25px;
+      position: absolute;
+      bottom: 30px;
+      right: 30px;
+      font-weight: bolder;
+      background-color: #23CF5C;
+      color: #fff;
+      border-radius: 50px;
+      cursor: pointer;
+  }
 
-@keyframes topBottom {
-    from{
-        transform: translateY(-150%);
-    }
-    to{
-        transform: translateY(0);
-    }
-}
+  .btnExcluirUsuario {
+      padding: 5px 10px 5px 10px;
+      position: absolute;
+      left: 25px;
+      bottom: 30px;
+      font-weight: bolder;
+      background-color: #D12C38;
+      color: #fff;
+      border-radius: 50px;
+      cursor: pointer;
+  }
 
-.modal-head{
-    padding: 20px;
-    border-bottom: 1px solid black;
-}
-
-.modal-body{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.espacos{
-    padding: 21px 10px;
-    width: 60%;
-    columns: 2;
-
-}
-
-.espacos > input{
-    padding: 20px;
-    margin: 10px;
-}
-
-.atualizarUsuario{
-    padding: 15px;
-    padding-left: 30px;
-    padding-right: 30px;
-    position: absolute;
-    right: 50px;
-    font-weight: bolder;
-}
-
-#excluirUsuario{
-    padding: 15px;
-    padding-left: 30px;
-    padding-right: 30px;
-    position: absolute;
-    right: 170px;
-    font-weight: bolder;
-}
-
-.fechar{
-    color: #aaa;
-    float: right;
-    font-size: 20px;
-    font-weight: bold;
-}
-
-.fechar:hover,
-.fechar:focus{
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-}
+  .fechar:hover,
+  .fechar:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+  }
