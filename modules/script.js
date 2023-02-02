@@ -9,7 +9,7 @@ var inputs2 = document.querySelectorAll('.preencher2')
 var inputValues = []
 var btnSalvar = document.querySelector('#salvarUsuario')
 
-function adcElemento(nome, email, sobrenome, cidade) {
+function adcElemento(nome, sobrenome, email, cidade) {
     var tabela = document.querySelector('table')
     var linha = tabela.insertRow()
     var celulaNome = linha.insertCell(0)
