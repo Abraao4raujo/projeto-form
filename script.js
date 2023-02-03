@@ -8,6 +8,8 @@ var inputs = document.querySelectorAll('.preencher')
 var inputs2 = document.querySelectorAll('.preencher2')
 var inputValues = []
 var btnSalvar = document.querySelector('#salvarUsuario')
+var excluirUsuario = document.querySelector('.btnExcluirUsuario')
+let selecionarLinha;
 
 function adcElemento(nome, sobrenome, email, cidade) {
     var tabela = document.querySelector('table')
@@ -22,7 +24,7 @@ function adcElemento(nome, sobrenome, email, cidade) {
     celulaEmail.setAttribute('id', 'display-email')
     celulaSobrenome.setAttribute('id', 'display-sobrenome')
     celulaCidade.setAttribute('id', 'display-cidade')
-    linha.setAttribute('id', 'linhaTr')
+    linha.id = uuidv4()
 
     celulaNome.innerHTML = nome
     celulaSobrenome.innerHTML = sobrenome
@@ -32,13 +34,24 @@ function adcElemento(nome, sobrenome, email, cidade) {
 
     //botao-editar-usuario
     btnEditarUsuario.addEventListener('click', () => {
-        modalSecondary.style.display = "block"
+    modal.style.display = "none"
+    modalSecondary.style.display = "block"
+    var linhas = document.querySelectorAll('table tr')
+        linhas.forEach(linha => {
+        linha.addEventListener('click', selecionandoLinha) 
     })
+    })
+}
+
+
+function selecionandoLinha(event) {
+    selecionarLinha = event.target.parentNode.parentNode
 }
 
 //abrir-modal-cadastro
 function abrirModal() {
     modal.style.display = 'block'
+    modalSecondary.style.display = 'none'
 }
 
 //botao-fechar
@@ -78,29 +91,28 @@ function colarInformacoesInput() {
 }
 
 function salvarMudancas() {
-    for (var i = 0; i < inputs2.length; i++) {
-        if (inputs2[i].value == '') {
-            console.log('Está vazio!')
-            return;
+
+        for (var i = 0; i < inputs2.length; i++) {
+            if (inputs2[i].value == '') {
+                console.log('Está vazio!')
+                return;
+            } else {
+            var name = document.getElementById('user-name').value
+            var email = document.getElementById('user-email').value
+            var sobrenome = document.getElementById('user-sobrenome').value
+            var cidade = document.getElementById('user-cidade').value
+                        
+            selecionarLinha.children[0].innerHTML = name,
+            selecionarLinha.children[2].innerHTML = email,
+            selecionarLinha.children[1].innerHTML = sobrenome,
+            selecionarLinha.children[3].innerHTML = cidade
         }
-    }
-
-    var name = document.getElementById('user-name').value
-    var email = document.getElementById('user-email').value
-    var sobrenome = document.getElementById('user-sobrenome').value
-    var cidade = document.getElementById('user-cidade').value
-
-    document.getElementById("display-name").innerHTML = name
-    document.getElementById("display-email").innerHTML = email
-    document.getElementById("display-sobrenome").innerHTML = sobrenome
-    document.getElementById("display-cidade").innerHTML = cidade
-
+        }
     modalSecondary.style.display = "none"
 }
 
 function excluirUser() {
-    var linha = document.querySelector('#linhaTr')
-    linha.remove()
+    selecionarLinha.remove() 
 
     document.getElementById('nome').value = ""
     document.getElementById('email').value = ""
@@ -110,6 +122,16 @@ function excluirUser() {
     modalSecondary.style.display = "none"
 }
 
+function removerTr(id){
+    id.remove()
+}
+
+function uuidv4() {
+    return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
+      (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+    );
+  }
+  
 //eventos
 btn.addEventListener('click', abrirModal)
 enviarBtn.addEventListener('click', enviarModal)
@@ -117,15 +139,4 @@ closeBtn.forEach((item) => {
     item.addEventListener('click', fecharModal)
 })
 btnSalvar.addEventListener('click', salvarMudancas)
-deleteBtn.addEventListener('click', excluirUser)
-
-//fechar-ao-redor-modal
-//function fecharAoRedor(event) {
-//    if(event.target == modal) {
-//        modal.style.display = "none"
-//    }
-//    if(event.target == modalSecondary) {
-//        modalSecondary.style.display = "none"
-//    }} 
-//
-//window.addEventListener('click', fecharAoRedor)
+excluirUsuario.addEventListener('click', excluirUser)
