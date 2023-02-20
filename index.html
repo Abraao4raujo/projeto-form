@@ -10,6 +10,7 @@
 </head>
 
 <body>
+
     <div id="container">
         <h1 class="cabecalho">Cadastro do cliente</h1>
 
@@ -32,19 +33,23 @@
                     <span class="fechar">X</span>
                     <p>Cadastrar cliente</p>
                 </div>
-
+                
                 <div class="modal-body">
                     <div class="espacos">
-                        <input type="text" name="nome" id="nome" placeholder="Nome" class="preencher" required>
-                        <input type="text" name="second-name" id="sobrenome" placeholder="Sobrenome" class="preencher"
-                            required>
-                        <input type="email" name="Email" id="email" placeholder="Email" class="preencher" required>
-                        <input type="text" name="cidade" id="cidade" placeholder="Cidade" class="preencher" required>
+                        <form name="formulario" id="formulario">
+                            <input type="text" name="nome" id="nome" placeholder="Nome" class="preencher" required>
+                            <input type="text" name="second-name" id="sobrenome" placeholder="Sobrenome"
+                                class="preencher" required>
+                            <input type="email" name="Email" id="email" placeholder="Email" class="preencher" required>
+                            <input type="text" name="cidade" id="cidade" placeholder="Cidade" class="preencher"
+                                required>
+
                     </div>
                 </div>
                 <div>
                     <input type="button" value="Enviar" class="btnSalvarUsuario" id="enviar">
                 </div>
+                </form>
             </div>
         </div>
 
