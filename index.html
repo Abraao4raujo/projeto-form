@@ -10,30 +10,27 @@
 </head>
 
 <body>
-
     <div id="container">
         <h1 class="cabecalho">Cadastro do cliente</h1>
-
-        <button type="button" id="botao-cadastro">cadastrar cliente</button>
+        <button type="button" class="botao" id="botao-cadastro">cadastrar cliente</button>
+        <button type="button" class="botao" id="botao-editar">editar cliente</button>
+        <button type="button" class="botao" id="botao-excluir">Excluir</button>
         <div id="pagina-principal">
-
             <table id="tabela">
                 <tr>
                     <th>Nome</th>
                     <th>Sobrenome</th>
                     <th>email</th>
                     <th>cidade</th>
-                    <th>Ação</th>
                 </tr>
             </table>
         </div>
         <div id="modalCadastrar">
             <div>
                 <div class="modal-head">
-                    <span class="fechar">X</span>
+                    <span id="fechar">X</span>
                     <p>Cadastrar cliente</p>
                 </div>
-                
                 <div class="modal-body">
                     <div class="espacos">
                         <form name="formulario" id="formulario">
@@ -43,38 +40,12 @@
                             <input type="email" name="Email" id="email" placeholder="Email" class="preencher" required>
                             <input type="text" name="cidade" id="cidade" placeholder="Cidade" class="preencher"
                                 required>
-
                     </div>
                 </div>
                 <div>
                     <input type="button" value="Enviar" class="btnSalvarUsuario" id="enviar">
                 </div>
                 </form>
-            </div>
-        </div>
-
-        <div id="modalEditar">
-            <div>
-                <div class="modal-head">
-                    <span class="fechar">X</span>
-                    <p>Editar Usuário</p>
-                </div>
-
-                <div class="modal-body">
-                    <div class="espacos">
-                        <input type="text" name="nome2" id="user-name" placeholder="Nome" class="preencher2" required>
-                        <input type="text" name="second-name2" id="user-sobrenome" placeholder="Sobrenome"
-                            class="preencher2" required>
-                        <input type="email" name="Email2" id="user-email" placeholder="Email" class="preencher2"
-                            required>
-                        <input type="text" name="cidade2" id="user-cidade" placeholder="Cidade" class="preencher2"
-                            required>
-                    </div>
-                </div>
-                <div>
-                    <input type="button" value="Excluir" class="btnExcluirUsuario" id="excluirUsuario">
-                    <input type="button" value="Salvar" class="btnSalvarUsuario" id="salvarUsuario">
-                </div>
             </div>
         </div>
     </div>
