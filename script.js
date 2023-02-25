@@ -1,104 +1,116 @@
-import {abrirModal, fecharModal, enviarModal} from "./modules/modal.js";
-var btn = document.querySelector('#botao-cadastro')
-var modal = document.querySelector('#modalCadastrar')
-var modalSecondary = document.querySelector('#modalEditar')
-var closeBtn = document.querySelectorAll('.fechar')
-var enviarBtn = document.querySelector('#enviar')
-var inputs2 = document.querySelectorAll('.preencher2')
-var btnSalvar = document.querySelector('#salvarUsuario')
-var excluirUsuario = document.querySelector('.btnExcluirUsuario')
-let selecionarLinha;
+var modalCadastrar = document.querySelector('#modalCadastrar')
+var botaoFecharModal = document.querySelector('#fechar')
+var botaoEnviarInput = document.querySelector('#enviar')
+var inputs = document.querySelectorAll('.preencher')
+var botaoCadastro = document.querySelector('#botao-cadastro')//usando
+var botaoEditar = document.querySelector('#botao-editar')//usando
+var botaoExcluir = document.querySelector('#botao-excluir')//usando
+var botaoSalvar = document.querySelector('.btnSalvarUsuario')
+var inputValues = []
+var linhaSelecionada2;
+botaoEditar.style.display = 'none'
+botaoExcluir.style.display = 'none'
 
-export function adcElemento(nome, sobrenome, email, cidade) {
+function adcElemento(nome, sobrenome, email, cidade) {
     var tabela = document.querySelector('table')
     var linha = tabela.insertRow()
-    var celulaNome = linha.insertCell(0)
-    var celulaSobrenome = linha.insertCell(1)
-    var celulaEmail = linha.insertCell(2)
-    var celulaCidade = linha.insertCell(3)
-    var btnEditarUsuario = linha.insertCell(4)
+    linha.innerHTML = `
+    <td id="display-nome">${nome}</td>
+    <td id="display-sobrenome">${sobrenome}</td>
+    <td id="display-email">${email}</td>
+    <td id="display-cidade">${cidade}</td>`
+    tabela.addEventListener(`click`, selecionandoLinha)
+}
 
-    celulaNome.setAttribute('id', 'display-name')
-    celulaEmail.setAttribute('id', 'display-email')
-    celulaSobrenome.setAttribute('id', 'display-sobrenome')
-    celulaCidade.setAttribute('id', 'display-cidade')
-    //linha.id = uuidv4()
-
-    celulaNome.innerHTML = nome
-    celulaSobrenome.innerHTML = sobrenome
-    celulaEmail.innerHTML = email
-    celulaCidade.innerHTML = cidade
-    btnEditarUsuario.innerHTML = `<button class="btnEdit">Editar</button>`
-
-    //botao-editar-usuario
-    btnEditarUsuario.addEventListener('click', () => {
-    modal.style.display = "none"
-    modalSecondary.style.display = "block"
-    var linhas = document.querySelectorAll('table tr')
-        linhas.forEach(linha => {
-        linha.addEventListener('click', selecionandoLinha) 
-    })
-    })
+function abrirModal(acao) {
+    const modalCadastrar = document.querySelector('#modalCadastrar')
+    const tituloModal = document.querySelector('.modal-head p')
+    const botaoEnviar = document.querySelector('#enviar')
+    tituloModal.textContent = acao === 'criar' ? 'Cadastrar Cliente'  : 'Editar Cliente'
+    botaoEnviar.value = acao === 'criar' ? 'Cadastrar' : 'Salvar'
+    if(tituloModal.textContent === 'Cadastrar Cliente'){
+    inputs.forEach(input => input.value = '')
+    }
+    modalCadastrar.classList.add('active')
 }
 
 function selecionandoLinha(event) {
-    selecionarLinha = event.target.parentNode.parentNode
-
-    document.getElementById('user-name').value = selecionarLinha.children[0].innerHTML
-    document.getElementById('user-sobrenome').value = selecionarLinha.children[1].innerHTML
-    document.getElementById('user-email').value = selecionarLinha.children[2].innerHTML
-    document.getElementById('user-cidade').value = selecionarLinha.children[3].innerHTML
+    const linhaSelecionada = event.target.closest(`tr`)
+    linhaSelecionada2 = linhaSelecionada
+    const nome = linhaSelecionada.children[0].innerText
+    const sobrenome = linhaSelecionada.children[1].innerText
+    const email = linhaSelecionada.children[2].innerText
+    const cidade = linhaSelecionada.children[3].innerText
+    dadosInput(nome, sobrenome, email, cidade)
+    if (linhaSelecionada) {
+        const linhas = document.querySelectorAll('table tr')
+        linhas.forEach(linha => {
+            if (linha !== linhaSelecionada) {
+                linha.classList.remove('active')
+            }
+        })
+        linhaSelecionada.classList.add('active')
+        setInterval(() => {
+            showButtonUser()
+        }, 250);
+    } else {
+        console.log("linhaSelecionada é null")
+    }
 }
 
-export function colarInformacoesInput() {
-    var name = document.getElementById('nome').value
-    var email = document.getElementById('email').value
-    var sobrenome = document.getElementById('sobrenome').value
-    var cidade = document.getElementById('cidade').value
+function showButtonUser() {
+    botaoEditar.style.display = 'inline'
+    botaoExcluir.style.display = 'inline'
+}
 
-    document.getElementById("user-name").value = name
-    document.getElementById("user-email").value = email
-    document.getElementById("user-sobrenome").value = sobrenome
-    document.getElementById("user-cidade").value = cidade
+function dadosInput(nome, sobrenome, email, cidade) {
+    document.querySelector('#nome').value = nome
+    document.querySelector('#sobrenome').value = sobrenome
+    document.querySelector('#email').value = email
+    document.querySelector('#cidade').value = cidade
 }
 
 function salvarMudancas() {
-        for (var i = 0; i < inputs2.length; i++) {
-            if (inputs2[i].value == '') {
-                console.log('Está vazio!')
-                return;
-            } else {
-            var name = document.getElementById('user-name').value
-            var email = document.getElementById('user-email').value
-            var sobrenome = document.getElementById('user-sobrenome').value
-            var cidade = document.getElementById('user-cidade').value
-                        
-            selecionarLinha.children[0].innerHTML = name,
-            selecionarLinha.children[2].innerHTML = email,
-            selecionarLinha.children[1].innerHTML = sobrenome,
-            selecionarLinha.children[3].innerHTML = cidade
+    for (var i = 0; i < inputs.length; i++) {
+        if (inputs[i].value == '') {
+            console.log('Está vazio!')
+            return;
+        } else {
         }
-        }
+    }
     fecharModal()
 }
 
+//botao-excluir-usuario
 function excluirUser() {
-    selecionarLinha.remove() 
+    console.log(linhaSelecionada2.remove())
+}
+
+//botao-fechar-modal
+function fecharModal() {
+    modalCadastrar.classList.toggle('active')
+}
+
+//botao-enviar-dados-modal
+function enviarModal() {
+    for (var i = 0; i < inputs.length; i++) {
+        if (inputs[i].value == '') {
+            console.log('Está vazio!')
+            return;
+        }
+        inputValues.push(inputs[i].value)
+    }
     fecharModal()
+    dadosInput()
+    adcElemento(...inputValues)
+    console.log(...inputValues)
+    inputs.forEach(input => input.value = '')
+    inputValues = []
 }
-
-/*function uuidv4() {
-    return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
-      (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
-    );
-}
-*/
-
 //eventos
-btn.addEventListener('click', abrirModal)
-enviarBtn.addEventListener('click', enviarModal)
-closeBtn.forEach((item) => {
-    item.addEventListener('click', fecharModal)
-})
-btnSalvar.addEventListener('click', salvarMudancas)
-excluirUsuario.addEventListener('click', excluirUser)
+botaoSalvar.addEventListener('click', salvarMudancas)
+botaoExcluir.addEventListener('click', excluirUser)
+botaoEditar.addEventListener('click', () => abrirModal('editar'))
+botaoCadastro.addEventListener('click', () => abrirModal('criar'))
+botaoEnviarInput.addEventListener('click', enviarModal)
+botaoFecharModal.addEventListener('click', fecharModal)
